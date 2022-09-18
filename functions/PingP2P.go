@@ -1,6 +1,7 @@
 package lib
 
 import (
+	"fmt"
     "bitbucket.org/taubyte/go-sdk/event"
     p2p "bitbucket.org/taubyte/go-sdk/p2p/event"
 )
