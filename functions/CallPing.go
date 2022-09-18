@@ -1,7 +1,9 @@
 package lib
 
 import (
+	"fmt"
     "bitbucket.org/taubyte/go-sdk/event"
+	"bitbucket.org/taubyte/go-sdk/p2p/node"
 )
 
 //export ping
