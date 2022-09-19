@@ -2,13 +2,14 @@ package lib
 
 import (
 	"fmt"
-    "bitbucket.org/taubyte/go-sdk/event"
-    p2p "bitbucket.org/taubyte/go-sdk/p2p/event"
+
+	"bitbucket.org/taubyte/go-sdk/event"
+	p2p "bitbucket.org/taubyte/go-sdk/p2p/event"
 )
 
 //export ping
 func ping(e event.Event) uint32 {
-    	p, err := e.P2P()
+	p, err := e.P2P()
 	if err != nil {
 		return 1
 	}
@@ -44,12 +45,18 @@ func runPing(e p2p.Event) error {
 		return err
 	}
 
+	to, err := e.To()
+	if err != nil {
+		return err
+	}
+
 	toWrite := fmt.Sprintf(`{
 		protocol: %s,
 		command: %s,
 		data: %s,
-		from: %s
-}`, protocol, command, string(data), from.String())
+		from: %s,
+		to: %s
+}`, protocol, command, string(data), from.String(), to.String())
 
 	return e.Write([]byte(toWrite))
 }
