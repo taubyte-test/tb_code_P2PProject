@@ -51,7 +51,7 @@ func runPing(e p2p.Event) error {
 	}
 
 	toWrite := fmt.Sprintf(`{
-		protocol: %s",
+		protocol: "%s",
 		command: "%s",
 		data: "%s",
 		from: "%s",
