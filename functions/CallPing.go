@@ -2,20 +2,21 @@ package lib
 
 import (
 	"fmt"
-    "bitbucket.org/taubyte/go-sdk/event"
+
+	"bitbucket.org/taubyte/go-sdk/event"
 	"bitbucket.org/taubyte/go-sdk/p2p/node"
 )
 
 //export ping
 func ping(e event.Event) uint32 {
-    h, err := e.HTTP()
+	h, err := e.HTTP()
 	if err != nil {
 		return 1
 	}
 
 	err = runPing(h)
 	if err != nil {
-		errString := fmt.Sprintf(`{"error": ping failed with %s}`, err)
+		errString := fmt.Sprintf(`{"error": "ping failed with %s"}`, err)
 		h.Write([]byte(errString))
 		return 1
 	}
