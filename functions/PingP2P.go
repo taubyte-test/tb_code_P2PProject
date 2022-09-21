@@ -16,7 +16,7 @@ func ping(e event.Event) uint32 {
 
 	err = runPing(p)
 	if err != nil {
-		errString := fmt.Sprintf(`{"error": ping failed with %s}`, err)
+		errString := fmt.Sprintf(`{"error": "ping failed with %s"}`, err)
 		p.Write([]byte(errString))
 		return 1
 	}
