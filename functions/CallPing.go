@@ -3,8 +3,9 @@ package lib
 import (
 	"fmt"
 
-	"bitbucket.org/taubyte/go-sdk/event"
-	"bitbucket.org/taubyte/go-sdk/p2p/node"
+	"github.com/taubyte/go-sdk/event"
+	httpEvent "github.com/taubyte/go-sdk/http/event"
+	"github.com/taubyte/go-sdk/p2p/node"
 )
 
 //export ping
@@ -24,7 +25,7 @@ func ping(e event.Event) uint32 {
 	return 0
 }
 
-func runPing(h event.HttpEvent) error {
+func runPing(h httpEvent.Event) error {
 	cmd, err := node.New("/test/v1").Command("ping")
 	if err != nil {
 		return err
